@@ -1,0 +1,275 @@
+body{
+	margin:0;
+	padding:0;
+	
+	/*background-image: url(Images/tile.gif); background-repeat: repeat-x repeat-y; /* This is the background tile for the site */
+	background-color:#124d7e;
+	
+	font: 14px/22px Helvetica, Sans-Serif; /* This is for the regular font in the site */
+	line-height: 125%; /* This gives 1.5 spacing in-between lines */
+	font-size:15px; /* This is for the regular font-size in the site */
+}
+
+#main_container {
+	width:960px; /* The main body of the site will be 900 pixels wide */
+	margin:0 auto;
+	background:#99c;
+	height: auto;
+	-moz-box-shadow: 15px 15px 15px #070224;
+	-webkit-box-shadow: 15px 15px 15px #070224;
+	box-shadow: 15px 15px 15px #070224;
+	-moz-border-radius: 15px;
+	border-radius: 15px;
+}
+
+#header {
+	/* This is the container for the banner/header */
+	/* padding-top:5px; */
+	background:#b21302;
+	text-align: center;
+}
+
+/* This is large-bolded font to use for headers in sub-sections */
+h2 {
+	margin:0 0 1em;
+	font-family: "Avant Garde", Avantgarde, "Century Gothic", CenturyGothic, "AppleGothic", sans-serif;
+	/* font-family:Arial,Helvetica,sans-serif; */}
+
+/* This is a regular bolded font used for smaller headers */
+h3 {
+	font-family: "Avant Garde", Avantgarde, "Century Gothic", CenturyGothic, "AppleGothic", sans-serif;
+	/* font-family:Arial,Helvetica,sans-serif; */
+	font-size:16px;
+	font-weight:bold;
+	
+}
+
+/* The following section deals with adjusting the link colors */
+a:link {
+	color: #2f23cf;
+	text-decoration:none;
+
+}
+a:visited {
+	color: #2f23cf;
+	text-decoration:none;
+}
+
+
+#footer {
+	/* This is the container for the footer */
+	clear:both;
+	padding-top:25px;
+	padding-left:15px;
+	padding-bottom:15px;
+	background:#b21302;
+	text-align:center;
+	-moz-border-radius-bottomright: 15px;
+	border-bottom-right-radius: 15px;
+	-moz-border-radius-bottomleft: 15px;
+	border-bottom-left-radius: 15px;
+}
+
+#footer p {
+	/* This is the font for the Footer */
+	margin:0;
+	font-size: 12px;
+	color: white;
+	font-family: sans-serif;
+}
+
+.caltext {
+	/* This is the font for the Footer */
+	margin:0;
+	font-size: 10px;
+	color: black;
+	font-family: sans-serif;
+}
+
+#right_side_container {
+	/* In order to make the two cloumns equal in height - backgrounds are created for each column. This is for the right column */
+	clear:right;
+	float:right;
+	width:100%;
+	overflow:hidden;
+	background:#FFFFFF; /* Right column background color */
+}
+
+#main_body_container {
+	/* This is the background color of the main [left] column. */
+	float:right;
+	width:100%;
+	position:relative;
+	right:30%;
+	background:#FFFFFF; /* Left background color */
+}
+
+/* The following is to format the date for news updates */
+#main_body_container .date {
+	/* position: absolute; left: 0; top: 0; padding: 4px 7px 4px 7px */
+	position:relative;
+	font: bold 30px Helvetica, Sans-Serif; 
+}
+	.date span
+	{
+		font: normal 18px Helvetica, Sans-Serif;
+		display: block; margin: -5px 0 0 0;
+	}
+
+#main_column {
+	/* This determines how much space is aligned for the main [left] column */
+	padding-top: 30px;
+	float:left;
+	/* width:66%; Old var */
+	width: 63%;
+	position:relative;
+	/* left:32%; Old var */
+	left: 35%;
+	overflow:hidden;
+}
+
+#left_side_column {
+	/* This determines how much space is aligned for the side [right] column */
+	padding-top: 30px;
+	float:left;
+	/* width:26%; Old var */
+	width: 26%;
+	position:relative;
+	/* left:36%; Old var */
+	left: 39%;
+	overflow:hidden;
+}
+
+IMG.centered_images {
+   display:block; /*images must be set to block in order use auto margins*/
+   margin:0 auto; /*centers images in most browsers*/
+   text-align:center; /*centers images in older browsers*/
+}
+
+/* The following is code for the Navigation Bar */
+.menu{
+	border:none;
+	border:0px;
+	margin:0px;
+	padding:0px;
+	/* font: "Lucida Sans Unicode", "Bitstream Vera Sans", "Trebuchet Unicode MS", "Lucida Grande", Verdana, Helvetica, sans-serif; */
+	font-family: "Avant Garde", Avantgarde, "Century Gothic", CenturyGothic, "AppleGothic", sans-serif;
+	font-size:16px;
+	font-weight:bold;
+	}
+	
+.menu ul{
+	background:#b21302;
+	height:40px;
+	list-style:none;
+	margin:0;
+	padding:0;
+	}
+	
+.menu li{
+	float:left;
+	padding:0px;
+	}
+
+/* The following is code for a block in the navigation bar, while it's not hovered */	
+.menu li a{
+	background:#b21302;
+	color:#FFFFFF;
+	display:block;
+	font-weight: bold;
+	line-height:40px;
+	margin:0px;
+	padding:0px 25px;
+	text-align:center;
+	text-decoration:none;
+	}
+
+/* The following is code for a block in the navigation bar, while it's hovered */	
+.menu li a:hover, .menu ul li:hover a{
+	background: #570800;
+	color:#FFFFFF;
+	text-decoration:none;
+}
+		
+/* The following is code for creating the dropdown box */
+.menu li ul{
+	background:#b21302;
+	display:none;
+	height:auto;
+	/* padding:10px; */
+	margin:0px;
+	border:0px;
+	position:absolute;
+	width:225px;
+	z-index:200;
+	/*top:1em;
+	/*left:0;*/
+	-moz-box-shadow: 5px 5px 5px #888;
+	-webkit-box-shadow: 5px 5px 5px #888;
+	box-shadow: 5px 5px 5px #888;
+	}
+	
+.menu li:hover ul{
+	display:block;
+	}
+	
+.menu li li {
+	display:block;
+	float:none;
+	margin:0px;
+	padding:0px;
+	width:225px;
+	}
+	
+.menu li:hover li a{
+	background:none;
+	}
+
+/* The following is code for a block of the sub-option [in the drop down box], while it's not hovered */		
+.menu li ul a{
+	display:block;
+	height:35px;
+	font-size:14px;
+	font-style:normal;
+	margin:0px;
+	padding:0px 10px 0px 15px;
+	text-align:left;
+	}
+
+/* The following is code for a block of the sub-option [in the drop down box], while it's hovered */	
+.menu li ul a:hover, .menu li ul li:hover a{
+	background:#570800;
+	border:0px;
+	color:#FFFFFF;
+	text-decoration:none;
+}
+
+.menu p{
+	clear:left;
+}	
+
+/* The following is code for the Officer's Profile page only */
+#profile_body
+{
+	padding: 2px;
+	margin: 10px;
+	width: 600px;
+}
+
+#profile_avatar
+{
+	float: left;
+	padding: 5px;
+	padding-top: 35px;
+	margin: 5px;
+	text-align: center;
+	width: 120px;
+}
+
+#profile_data
+{
+	float: right;
+	margin-left: 10px;
+	width: 200px;
+	padding: 2px;
+}
