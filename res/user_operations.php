@@ -39,6 +39,7 @@
 		
 		include_once('header.php');
 		
+		/* So this is what HTML Purifier is doing... */
 		$config = HTMLPurifier_Config::createDefault();
 		$purifier = new HTMLPurifier($config);
 		$clean_html = $purifier->purify($dirty_html);

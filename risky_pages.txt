@@ -1,3 +1,7 @@
+# a list of pages that have student-code accessing the database
+# complied to as a todo-list for checking SQL injections scrubbing
+# RNW, Sep 20, 2018
+
 res/list_news.php:4:con->prepare
 res/user_operations.php:9:con->prepare
 res/user_operations.php:52:con->prepare
