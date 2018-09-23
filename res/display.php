@@ -343,7 +343,7 @@
                 //carries over "current" value
                 //emboldens current page
                 echo('
-                <a href="/cae/home.php?p=shows&c='.$i.(isset($_GET['current'])?('&current='.$_GET['current']):'').'">'
+                <a href="/cae/home.php?p=shows&c='.$i.(isset($_GET['current'])?('&current='.htmlentities($_GET['current']):'').'">'
                     .( ($i==$_GET['c']) ? '<b>'.$i.'</b>' : $i )
                 .'</a>');
 
@@ -388,12 +388,14 @@
 			foreach($newslist as &$res) {
 				echo('
 				<div class="news_header">
-					<a href="/cae/home.php?p='.$page.'&id='.$res['id'].'" id="title">'.$res['title'].'</a>
-					<p style="font-size:75%; color:#666666;">Posted by: '.$res['posted_by'].' at '.$res['datetime'].'</p>
+					<a href="/cae/home.php?p='.$page.'&id='.intval($res['id']).'" id="title">'.$res['title'].'</a>
+					<p style="font-size:75%; color:#666666;">Posted by: '.htmlentities($res['posted_by']).' at '.htmlentities($res['datetime']).'</p>
 				</div>
 				<div class="news_body">
 					<p>'.$res['content'].'</p>
 					<br />');
+					//because content is HTML being pulled from the database, sadly we can't scrub it as easily
+					//though it is getting scrubbed when put in, so it should be fine
 				echo('<br /><hr noshade="noshade">
 					<br /></div>');
 			}
@@ -442,13 +444,13 @@
 		foreach($newslist as &$res) {
 			echo('
 			<div class="news_header">
-				<a href="/cae/home.php?p='.$page.'&id='.$res['id'].'" id="title">'.$res['title'].'</a>
-				<p style="font-size:75%; color:#666666;">Posted by: '.$res['posted_by'].' at '.$res['datetime'].'</p>
+				<a href="/cae/home.php?p='.htmlentities($page).'&id='.intval($res['id']).'" id="title">'.$res['title'].'</a>
+				<p style="font-size:75%; color:#666666;">Posted by: '.htmlentities($res['posted_by']).' at '.htmlentities($res['datetime']).'</p>
 			</div>
 			<div class="news_body">
 				<p>'.$res['content'].'</p>');
 			if (!isset($_GET['id']) && strlen($res['content']) == 2000) {
-				echo('<br /><p style="float:right;"><a href="/cae/home.php?p='.$page.'&id='.$res['id'].'">more...</a></p>');
+				echo('<br /><p style="float:right;"><a href="/cae/home.php?p='.htmlentities($page).'&id='.intval($res['id']).'">more...</a></p>');
 			}
 			echo('<br /><hr noshade="noshade">
 				<br /></div>');
