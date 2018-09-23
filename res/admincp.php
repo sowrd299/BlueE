@@ -75,10 +75,10 @@
 				
 			echo('<table class="form_table">');
 			echo('<form action="http://clubs.uci.edu/cae/res/user_operations.php?op=edit_news" method="post" id="postform">');
-			echo('<tr><td width="10px">Title:</td><td><input type="text" name="title" value="'.$newslist['title'].'"></input></td>
-					<td>Tag:</td><td><input type="text" name="tag" value="'.$newslist['tag'].'"></td></tr>');
+			echo('<tr><td width="10px">Title:</td><td><input type="text" name="title" value="'.htmlentities($newslist['title']).'"></input></td>
+					<td>Tag:</td><td><input type="text" name="tag" value="'.htmlentities($newslist['tag']).'"></td></tr>');
 			echo('<tr><td colspan="4"><textarea style="min-height:500px; width:625px;" form="postform" name="content">'.$newslist['content'].'</textarea></td></tr>');
-			echo('<input style="display:none;" name="id" value="'.$id.'">');
+			echo('<input style="display:none;" name="id" value="'.intval($id).'">');
 			echo('<tr><td></td><td><input type="submit"></td></tr>');
 			echo('</form></table>');
 		}

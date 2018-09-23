@@ -35,6 +35,8 @@
 	function display_officers() {
 		$con = connect();
 		
+		//NOTE: If you are going to turn this code back on it may have an XSS vulnurability
+		// ...so fix that first before you start using it again
         /*
         ($stmt = $con->prepare('SELECT name, about, picture FROM board_mods ORDER BY id ASC'))
         || fail('MySQL prepare', $con->error);
@@ -237,10 +239,9 @@
 		
 		echo('<br /><hr noshade=:noshade"><br /> <br />');
 
-		echo('<!--testing hide if '.$_GET['current'].' '.!isset($_SESSION['username']).' '.$hide_upcoming.'-->');
 		//hide upcoming shows from non-officers
 		if($_GET['current'] == 'upcoming' && !isset($_SESSION['username']) && $hide_upcoming){
-			echo('<p>While we appretiate your enthusiasm, for administrative reasons, our upcoming shows are kept secret.</p>');
+			echo('<p>While we appretiate your enthusiasm, our upcoming shows are kept secret for administrative reasons.</p>');
 			return;
 		}
 		
@@ -251,22 +252,23 @@
 		
 			echo('<div class="show" >');
 			echo('<img align="left" src="'.$xml->anime->info['src'].'"></img>');
-			echo('<a href="http://clubs.uci.edu/cae/home.php?p=shows&n='.$res['id'].'"><h2 style="float:right;">'.explode(" - ",$xml->anime['name'])[0].'</h2></a>');
+			echo('<a href="http://clubs.uci.edu/cae/home.php?p=shows&n='.intval($res['id']).'"><h2 style="float:right;">'.explode(" - ",$xml->anime['name'])[0].'</h2></a>');
+			//cast to int to fight XSS
 		
 			foreach($xml->anime->children() as $info) {
 				if ($info['type'] == 'Plot Summary')
-					echo('<br /><br /><p>'.$info.'</p>');
+					echo('<br /><br /><p>'.htmlentities($info).'</p>'); //this may or may not break... 
 			}
 		
 			if (isset($_GET['n'])) {
-				echo('<p>'.$res['officer_blurb'].'</p>');
+				echo('<p>'.htmlentities($res['officer_blurb']).'</p>');
 			}
 		
 			echo('<h4 display="inline"><br />');
 			foreach($xml->anime->children() as $info) {
 				foreach($info->attributes() as $attribute) {
 					if ($attribute == 'Genres') {
-						echo($info.'  ');
+						echo(htmlentities($info).'  '); //this may or may not break...
 					}
 				}
 			}
@@ -274,12 +276,13 @@
 			echo('<h3>');
 		
 			if ($res['current'] == '1') {
-				echo('<h4 display="inline-block">Current: Yes <br />Current Episode: '.$res['current_ep'].'/');
+				echo('<h4 display="inline-block">Current: Yes <br />Current Episode: '.intval($res['current_ep']).'/');
+				//cast to int to fight XSS
 				
 				foreach ($xml->anime->children() as $info) {
 					foreach($info->attributes() as $attribute) {
 						if ($attribute == 'Number of episodes') {
-							echo($info.'</h4>');
+							echo(htmlentities($info).'</h4>');
 							break;
 						}
 					}
@@ -295,27 +298,27 @@
 		
 				if ($res['officer_blurb'] != '') {
 					echo('<h2>Officer Blurb</h2><hr noshade="noshade"></h2>');
-					echo('<p>'.$res['officer_blurb'].'</p>');
+					echo('<p>'.htmlentities($res['officer_blurb']).'</p>');
 				}
 					
 				echo('<h2> More Information</h2><hr noshade="noshade"></h2>');
 				echo('<table style="padding:5px; width:500px;">');
 				foreach($xml->anime->children() as $info) {
 					if ($info['lang'] == 'JA' && $info['type'] == 'Alternative title') {
-						echo('<tr><td>Alternative Title: </td><td>'.$info.'</td></tr>');
+						echo('<tr><td>Alternative Title: </td><td>'.htmlentities($info).'</td></tr>');
 					}
 					if ($info['type'] == 'Opening Theme') {
 						if (strlen($info) >= 100) {
-							echo('<tr><td style="width: 150px;">Opening Theme: </td><td>'.substr($info, 0, 100).'...</td></tr>');
+							echo('<tr><td style="width: 150px;">Opening Theme: </td><td>'.htmlentities(substr($info, 0, 100)).'...</td></tr>');
 						} else {
-							echo('<tr><td style="width: 150px;">Opening Theme: </td><td>'.$info.'</td></tr>');
+							echo('<tr><td style="width: 150px;">Opening Theme: </td><td>'.htmlentities($info).'</td></tr>');
 						}
 					}
 					if ($info['type'] == 'Ending Theme') {
 						if (strlen($info) >= 100) {
-							echo('<tr><td style="width: 150px;">Ending Theme: </td><td>'.substr($info, 0, 100).'...</td></tr>');
+							echo('<tr><td style="width: 150px;">Ending Theme: </td><td>'.htmlentities(substr($info, 0, 100)).'...</td></tr>');
 						} else {
-							echo('<tr><td style="width: 150px;">Ending Theme: </td><td>'.$info.'</td></tr>');
+							echo('<tr><td style="width: 150px;">Ending Theme: </td><td>'.htmlentities($info).'</td></tr>');
 						}
 					}
 				}
