@@ -1,6 +1,0 @@
-Column 1, Question 1
-Column 1, Question 2
-Column 1, Question 3
-Column 1, Question 4
-Column 1, Question 5
-Column 1, Question 6
