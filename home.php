@@ -87,14 +87,15 @@
 						<hr noshade="noshade"/>
 						<table style="width: 100%;" class="info_table">
 							<tr><td colspan="2" style="text-align: center;">Club Information</td></tr>
-							<tr><td>Room</td><td style="text-align: right;">DBH 1300</td></tr>
-							<tr><td>Time</td><td style="text-align: right;">Thursdays at 7:00 PM</td></tr>
+							<tr><td>Room</td><td style="text-align: right;">TBD</td></tr>
+							<tr><td>Time</td><td style="text-align: right;">TBD</td></tr>
 							<tr><td>Mailing List</td><td style="text-align: right;"><a class="item_add" href="https://mail.clubs.uci.edu/mailman/listinfo/cae-list">Here</a></td></tr>
 						</table>
 						<hr noshade="noshade"/>
 						<br />
 					</div>
 
+					<!-- commented out for now
 					<a href="http://www.classrooms.uci.edu/GAC/DBH1300.html"><img style="max-width:285px;" src="http://www.classrooms.uci.edu/gac/mapgrids/DBH.png"></a><!---->
 					
 					<a href="https://www.facebook.com/groups/calanimageepsilon/"><img src="images/fb.png" alt="" border="0" style="width:140px; height:140px;"/></a>
