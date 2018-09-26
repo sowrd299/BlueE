@@ -343,7 +343,7 @@
                 //carries over "current" value
                 //emboldens current page
                 echo('
-                <a href="/cae/home.php?p=shows&c='.$i.(isset($_GET['current'])?('&current='.htmlentities($_GET['current']):'').'">'
+                <a href="/cae/home.php?p=shows&c='.$i.(isset($_GET['current'])?('&current='.htmlentities($_GET['current'])):'').'">'
                     .( ($i==$_GET['c']) ? '<b>'.$i.'</b>' : $i )
                 .'</a>');
 
